@@ -29,7 +29,17 @@ void Clear(TreeNode* root) {
 
 // Insert function (recursive)
 TreeNode* Insert(TreeNode* root, const int& value) {
-  // TODO: Insert value into the tree whose root is root
+  if (root == nullptr) {
+    return new TreeNode(value);
+  }
+
+  if (value < root->data) {
+    root->left = Insert(root->left, value);
+  } else if (value > root->data) {
+    root->right = Insert(root->right, value);
+  }
+
+  return root;
 }
 
 int main() {
